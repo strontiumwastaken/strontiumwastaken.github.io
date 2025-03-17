@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Flow+Block&family=Indie+Flower&family=Londrina+Shadow&family=Nova+Square&family=Oswald:wght@200..700&family=Shadows+Into+Light&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Flow+Block&family=Geist+Mono:wght@100..900&family=Indie+Flower&family=Londrina+Shadow&family=Nova+Square&family=Oswald:wght@200..700&family=Shadows+Into+Light&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <title>I. Am. Stevee </title>
+  <style>
+    body {
+      text-align: center;
+      background: url("https://i.redd.it/n5yqsh9h7rr41.jpg");
+      background-size: cover;
+      background-position: center;
+      color: cyan;
+      font-family: helvetica;
+    }
+    p {
+      font-size: 22px;
+      font-family: "Nova Square", sans-serif;
+    }
+    input {
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+      font-family: "Geist Mono", monospace;
+    }
+    input[type="submit"] {
+      background: grey;
+      color: cyan;
+    }
+    img {
+      width: 200px;
+      border-radius: 500px;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://avatarfiles.alphacoders.com/701/70187.jpg">
+  <p>Hi! I'm Steve, a Professional Miner. Sup!</p>
+		<input id="Name" placeholder="Name">
+  <input id="Email" type="email" placeholder="Your email">
+  <input id="submit" type="submit">
+		
+		<script type="module">
+		  // Import the functions you need from the SDKs you need
+		  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+				import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+		  // TODO: Add SDKs for Firebase products that you want to use
+		  // https://firebase.google.com/docs/web/setup#available-libraries
+
+		  // Your web app's Firebase configuration
+		  const firebaseConfig = {
+		    apiKey: "AIzaSyBcEx9qW1e0fpV-7mfapf_VaAifEiUXy_M",
+		    authDomain: "syed-ad24c.firebaseapp.com",
+		    projectId: "syed-ad24c",
+		    storageBucket: "syed-ad24c.firebasestorage.app",
+		    messagingSenderId: "259683856411",
+		    appId: "1:259683856411:web:5143a66398ae28b98d08be"
+		  };
+
+		  // Initialize Firebase
+		  const app = initializeApp(firebaseConfig);
+				const db = getDatabase(app);
+				const Name = document.querySelector("#Name")
+				const Email = document.querySelector("#Email")
+				document.querySelector('#submit').addEventListener('click', Submit)
+				
+				function Submit() {
+				  const timestamp = buildTimestamp()
+	  
+				  set(ref(db, timestamp), {
+					  Name: Name.value,
+				      email: Email.value,
+				  });
+
+				  Name.value = ""
+				  Email.value = ""
+				}
+				function buildTimestamp() {
+				  const now = new Date();
+				  let timestamp = now.getFullYear().toString() + "/";
+				  //const month = now.toLocaleString('default', { month: 'long' });
+
+				  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+				  month = month.toString()
+				  month = addLeadingZero(month)
+				  timestamp += month + "/"; 
+
+				  let date = now.getDate().toString()
+				  date = addLeadingZero(date)
+				  timestamp += date + "/";
+
+				  let hours = now.getHours().toString()
+				  hours = addLeadingZero(hours)
+				  timestamp += hours + ":";
+
+				  let minutes = now.getMinutes().toString()
+				  minutes = addLeadingZero(minutes)
+				  timestamp += minutes + ":";
+
+				  let seconds = now.getSeconds().toString()
+				  seconds = addLeadingZero(seconds)
+				  timestamp += seconds;
+  
+				  return timestamp
+				}
+	
+				function addLeadingZero(units) {
+					if (units.length < 2) {
+						units = "0" + units
+					}
+					return units
+				}
+				
+			
+		</script>
+</body>
