@@ -9,7 +9,7 @@
       text-align: center;
       background: url("https://i.redd.it/n5yqsh9h7rr41.jpg");
       background-size: cover;
-      background-position: center;
+      background-position: top;
       color: cyan;
       font-family: helvetica;
     }
@@ -28,16 +28,18 @@
       color: cyan;
     }
     img {
+		
       width: 200px;
-      border-radius: 500px;
+      border-radius: 400px;
     }
   </style>
 </head>
 <body>
   <img src="https://avatarfiles.alphacoders.com/701/70187.jpg">
   <p>Hi! I'm Steve, a Professional Miner. Sup!</p>
-		<input id="Name" placeholder="Name">
+		<input id="Name" placeholder="Name"> 
   <input id="Email" type="email" placeholder="Your email">
+  <input id="Hobby" placeholder="Hobby">
   <input id="submit" type="submit">
 		
 		<script type="module">
@@ -62,6 +64,7 @@
 				const db = getDatabase(app);
 				const Name = document.querySelector("#Name")
 				const Email = document.querySelector("#Email")
+				const Hobby = document.querySelector("#Hobby")
 				document.querySelector('#submit').addEventListener('click', Submit)
 				
 				function Submit() {
@@ -70,10 +73,12 @@
 				  set(ref(db, timestamp), {
 					  Name: Name.value,
 				      email: Email.value,
+					  Hobby: Hobby.value,
 				  });
 
 				  Name.value = ""
 				  Email.value = ""
+				  Hobby.value = ""
 				}
 				function buildTimestamp() {
 				  const now = new Date();
