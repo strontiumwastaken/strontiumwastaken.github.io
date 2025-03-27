@@ -13,7 +13,7 @@ body {
 }
 div {
   height: 350px;
-  background-size: cover;
+  background-size: 100% 100%;
   position: relative;
   margin: 40px 0 0 0;
   border-radius: 12px;
@@ -66,15 +66,19 @@ small {
 
 .first{
   background-image: url(https://i.ytimg.com/vi/Q6gZuGQUNpg/maxresdefault.jpg);
-  background-size: 600px;
+
 }
 .second{
   background-image: url("https://mccormick.widen.net/content/fhwuhie9rb/webp/Franks%20RedHot%20Spicy%20Chicken%20Sandwich-1376x774.webp");
-  background-size: 600px;
+
 }
 .dessert{
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC38hrFqIX3cdYONp7AM1FeeN9IJj4oYta1g&s");
-  background-size: 330px;
+  background-image: url("https://preview.redd.it/devil-fruit-cake-v0-f86h4b0mtgnc1.jpeg?auto=webp&s=9ef862ed54cabc8d13b509a3682b872d350cf4e3");
+
+}
+.drink{
+  background-image: url("https://preview.redd.it/fhfb7rvwccc81.png?width=1024&format=png&auto=webp&s=4c787931d77416e5215afc03dbffb5359f980fdc");
+
 }
 .price {
   float: right;
@@ -131,6 +135,12 @@ input {
   <small>The blue fruitcake is visually striking, featuring a rich, deep blue hue that comes from the inclusion of blue-hued ingredients such as blueberries or blue candied fruits. The cake’s surface is often adorned with additional fruits and nuts, creating an appealing contrast against the vibrant blue.</small></p>
 </div>
 
+<div class="drink">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>sake <span class="price">$9</span><br />
+  <small>A smooth and refined rice wine with a delicate balance of sweetness and umami. This traditional brew offers a light fragrant aroma with a subtle floral and fruity notes. Depending on the variety, it can range from crisp and dry to rich and full-bodied, with hints of melon, pear and a touch of rice sweetness.</small></p>
+</div>
+
 <br><br>
 		<input id="Name" placeholder="Name">
   <input id="Email" type="email" placeholder="Your email">
@@ -170,7 +180,7 @@ input {
 		const Email = document.querySelector("#Email")
 		document.querySelector('#submit').addEventListener('click', Submit)
 		const quantities = document.querySelectorAll(".quantities")
-		const itemsList = ["Meat on bone", "Cutty Flam Burger", "Fruitcake Phoenix"]
+		const itemsList = ["Meat on bone", "Cutty Flam Burger", "Fruitcake Phoenix","sake"]
 		const prices = document.querySelectorAll(".price") 
 		
 		
